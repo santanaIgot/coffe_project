@@ -14,10 +14,9 @@ export function Header() {
                 <ContainerBox>
                     <MapPin/>
                     <span>São paulo, SP</span>
-
-                <Link to='/'>
+                
                     <ShoppingCart />
-                <Link/>
+                
                 </ContainerBox>
             </Aside>
 
