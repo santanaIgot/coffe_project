@@ -6,21 +6,16 @@ import { MapPin, ShoppingCart } from "phosphor-react";
 export function Header() {
     return(
         <HeaderContainer>
-            <Link to='/'>
-                <img src={logo}/>
+            <Link to="/">
+               <img src={logo}/>
             </Link>
-
             <Aside>
                 <ContainerBox>
                     <MapPin/>
                     <span>São paulo, SP</span>
-                
                     <ShoppingCart />
-                
                 </ContainerBox>
             </Aside>
-
-            
         </HeaderContainer>
     )
 }
