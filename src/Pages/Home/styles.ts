@@ -64,6 +64,11 @@ export const Info = styled.div`
         padding: 1px;
         border-radius: 999px;
     }
-
-    
 `
+
+
+export const CoffeList = styled.div`
+  display: flex;
+  
+`
+

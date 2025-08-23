@@ -1,6 +1,8 @@
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
 import CoffeImage from "../../assets/Coffe.svg";
-import { Heading, HeroContent, HeroSection, Info } from "./styles";
+import { CoffeList, Heading, HeroContent, HeroSection, Info } from "./styles";
+import { Card } from "../../components/Card";
+import {coffees} from "../../../data.json"
 
 export function Home() {
   return (
@@ -40,6 +42,16 @@ export function Home() {
           </div>
         </HeroContent>
       </HeroSection>
+
+
+      <CoffeList>
+         <h1>Nossos cafés</h1>
+          {coffees.map((coffee)=>(
+            <Card key={coffee.id} coffee={coffee}/>
+          ))}
+      </CoffeList>
+     
+      
     </div>
   );
 }

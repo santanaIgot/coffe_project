@@ -1,5 +1,6 @@
 import {createGlobalStyle} from "styled-components"
 import { defaultTheme } from "./themes/default"
+import { mixins } from "./mixins"
 
 
 export const GlobalStyle = createGlobalStyle` 
@@ -12,14 +13,17 @@ export const GlobalStyle = createGlobalStyle`
 
     body{
         background-color: ${defaultTheme.colors.background};
-        color: ${defaultTheme.colors["base-title"]};
+        color: ${defaultTheme.colors["base-text"]};
+        -webkit-font-smoothing: antialiased;
     }
 
 
-    body, input, textArea, button{
-        font-family: 'Roboto', sans-serif;
-        font-weight: 400;
-        font-size: 1rem;
+    body, input, textArea{
+        ${mixins.fonts.textM};
+    }
 
+     button {
+        border: none;
+        cursor: pointer;
     }
 `
