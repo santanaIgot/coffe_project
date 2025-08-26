@@ -69,6 +69,15 @@ export const Info = styled.div`
 
 export const CoffeList = styled.div`
   display: flex;
-  
+  flex-direction: column;
+  max-width: 1160px;
+  padding: 102px 400px 150px;
+  gap: 54px;
+  > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-row-gap: 40px;
+    grid-column-gap: 32px;
+  }
 `
 

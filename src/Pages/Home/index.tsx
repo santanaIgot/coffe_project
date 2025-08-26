@@ -46,9 +46,13 @@ export function Home() {
 
       <CoffeList>
          <h1>Nossos cafés</h1>
-          {coffees.map((coffee)=>(
-            <Card key={coffee.id} coffee={coffee}/>
-          ))}
+
+         <div>
+            {coffees.map((coffee)=>(
+              <Card key={coffee.id} coffee={coffee}/>
+            ))}
+         </div>
+         
       </CoffeList>
      
       
