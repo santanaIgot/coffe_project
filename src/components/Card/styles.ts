@@ -57,7 +57,7 @@ export const Description = styled.span`
 
 
 export const Price = styled.div`
-      display: flex;
+    display: flex;
     align-items: baseline;
     gap: 2px;
 
@@ -75,8 +75,19 @@ export const Price = styled.div`
 
 export const Control = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-
   margin-top: 32px;
+  gap: 100px;
+`
+
+
+export const BoxOrder = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+   > button#cart{
+        background-color: ${({theme})=> theme.colors["purple-dark"]};
+    }
+
 `

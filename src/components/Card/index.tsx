@@ -1,4 +1,7 @@
-import { CoffeContainer, CoffeImage, Control, Description, Price, Tags, Title } from "./styles";
+import { CheckSquareOffset, Minus, Plus, ShoppingCart } from "phosphor-react";
+import { BoxOrder, CoffeContainer, CoffeImage, Control, Description, Price, Tags, Title } from "./styles";
+import { useState } from "react";
+import { useTheme } from "styled-components";
 
 
 type Props = {
@@ -14,6 +17,8 @@ type Props = {
 
 
 export function Card({ coffee }: Props) {
+    const [] = useState([])
+    const theme = useTheme()
     return(
         <CoffeContainer>
             
@@ -30,12 +35,27 @@ export function Card({ coffee }: Props) {
 
             <Control>
                 <Price>
+                    <span>R$</span>
                     <span>{coffee.price}</span>
                 </Price>
-            </Control>
-          
-            
 
+                <BoxOrder>
+                    <button>
+                        <Plus/>
+                    </button>
+                    <button>
+                        <Minus/>
+                    </button>
+                    <button id="cart">
+                        <ShoppingCart
+                            size={22}
+                            weight="fill"
+                            color={theme.colors["base-card"] }
+                        />
+                    </button>
+                 
+                </BoxOrder>
+            </Control>
         </CoffeContainer>
     )
 }
