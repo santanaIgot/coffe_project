@@ -76,7 +76,8 @@ export const Price = styled.div`
 export const Control = styled.div`
   display: flex;
   margin-top: 32px;
-  gap: 100px;
+  gap: 35px;
+  align-items: center;
 `
 
 
@@ -84,10 +85,17 @@ export const BoxOrder = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 5px;
 
-
-   > button#cart{
+    > button{
         background-color: ${({theme})=> theme.colors["purple-dark"]};
+        padding: 8px;
+        display: flex;
+        transition: background-color 0.2s;
+        border-radius: 6px;
+        padding: 8px;
+        display: flex;
     }
+
 
 `

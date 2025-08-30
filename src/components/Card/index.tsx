@@ -2,6 +2,7 @@ import { CheckSquareOffset, Minus, Plus, ShoppingCart } from "phosphor-react";
 import { BoxOrder, CoffeContainer, CoffeImage, Control, Description, Price, Tags, Title } from "./styles";
 import { useState } from "react";
 import { useTheme } from "styled-components";
+import { ButtonIncrementDecrement } from "../ButtonIncrementDecrement";
 
 
 type Props = {
@@ -40,20 +41,15 @@ export function Card({ coffee }: Props) {
                 </Price>
 
                 <BoxOrder>
+                    <ButtonIncrementDecrement/>
+
                     <button>
-                        <Plus/>
-                    </button>
-                    <button>
-                        <Minus/>
-                    </button>
-                    <button id="cart">
-                        <ShoppingCart
-                            size={22}
-                            weight="fill"
-                            color={theme.colors["base-card"] }
+                      <ShoppingCart
+                        size={22}
+                        weight="fill"
+                        color={theme.colors["base-card"]}
                         />
                     </button>
-                 
                 </BoxOrder>
             </Control>
         </CoffeContainer>
