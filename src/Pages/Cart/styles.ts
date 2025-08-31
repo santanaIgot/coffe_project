@@ -19,12 +19,6 @@ export const ContainerCart = styled.div`
     flex-direction: column;
     gap: 16px;
    
-    >form{
-        display: flex;
-        flex-direction: column;
-        gap: 32px;
-    }
-
     p{
         ${mixins.fonts.textL}
     }
@@ -35,11 +29,7 @@ export const ContainerCart = styled.div`
 
     
 `
-
-export const BoxCart = styled.div`
     
-
-`
 
 export const HeadlineCart = styled.div`
 
@@ -62,7 +52,8 @@ export const Head = styled.div`
 
 export const FormCart = styled.div`
     display: grid;
-    grid-template-areas:  'cep . .'
+    grid-template-areas:
+    'cep . .'
     'street street street'
     'number fullAddress fullAddress'
     'neighborhood city state';
@@ -83,3 +74,24 @@ export const FormsContainer = styled.div`
 `
 
 export const CartAdress = styled(FormsContainer)``
+
+export const PaymentCart = styled(FormsContainer)``
+
+export const HeadlinePayment = styled(HeadlineCart)`
+    svg{
+        color: ${({theme}) => theme.colors.purple};
+    }
+`
+
+
+export const PaymentOptions = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    div{
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+    }
+`
