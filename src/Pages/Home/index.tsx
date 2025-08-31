@@ -54,8 +54,6 @@ export function Home() {
          </div>
          
       </CoffeList>
-     
-      
     </div>
   );
 }
