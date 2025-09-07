@@ -1,16 +1,22 @@
 import { Minus, Plus } from "phosphor-react";
 import { Container } from "./style";
 
-export function ButtonIncrementDecrement() {
-  
+type PropsButton = {
+  quantity : number ;
+  handleIncrementQuantity(): void;
+  handleDecrementQuantity(): void
+}
+
+export function ButtonIncrementDecrement({handleDecrementQuantity, handleIncrementQuantity, quantity}: PropsButton) {
+     
   return (
     <>
       <Container>
-        <button>
+        <button onClick={handleIncrementQuantity}>
           <Plus />
         </button>
-        <span>1</span>
-        <button>
+        <span>{quantity}</span>
+        <button onClick={handleDecrementQuantity}>
           <Minus />
         </button>
       </Container>
