@@ -2,7 +2,6 @@ import { forwardRef, type InputHTMLAttributes, type LegacyRef } from "react"
 import { Container } from "./styles"
 
 type Props = InputHTMLAttributes<HTMLInputElement> & {
-
     isSelected: boolean
 }
 

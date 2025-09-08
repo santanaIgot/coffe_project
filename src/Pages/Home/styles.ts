@@ -27,7 +27,7 @@ export const Heading = styled.div`
     }
 
     > span{
-        ${mixins.fonts.titleL}
+        ${mixins.fonts.textL}
         color: ${({theme}) => theme.colors["base-subtitle"]};
     }
 

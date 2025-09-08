@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { ShoppingCart } from "phosphor-react";
+import { Check, ShoppingCart } from "phosphor-react";
 import { BoxOrder, CoffeContainer, CoffeImage, Control, Description, Price, Tags, Title } from "./styles";
 import { useTheme } from "styled-components";
 import { ButtonIncrementDecrement } from "../ButtonIncrementDecrement";
 import { useState } from "react";
+import { useCart } from "../../hooks/useCart";
 
 
 
@@ -21,9 +22,11 @@ type Props = {
 
 export function Card({ coffee }: Props) {
     const theme = useTheme()
-    // const [addItem , itemAdded] = useState(false);
+    const [isItemAdded , setIsItemAdded] = useState(false);
     const [quantity, setQuantity] = useState(1);
-  
+
+    const {addItem} = useCart()
+
       function handleIncrementQuantity() {
         setQuantity((state) => state + 1)
       }
@@ -34,9 +37,11 @@ export function Card({ coffee }: Props) {
         }
       }
 
-    //   function handleAddItem() {
-    //     addItem({id: coffee.id, quantity})
-    //   }
+      function handleAddItem() {
+        addItem({id: coffee.id, quantity})
+        setIsItemAdded(true)
+        setQuantity(1)
+      }
 
     return(
         <CoffeContainer>
@@ -59,8 +64,12 @@ export function Card({ coffee }: Props) {
                     handleIncrementQuantity={handleIncrementQuantity}
                     quantity={quantity}
                     />
-                    <button> 
-                        <ShoppingCart size={22} weight="fill" color={theme.colors["base-card"]}/>
+                    <button disabled={isItemAdded} onClick={handleAddItem}> 
+                        {isItemAdded ? (
+                            <Check/>
+                        ):(
+                            <ShoppingCart size={22} weight="fill" color={theme.colors["base-card"]}/>
+                        )}
                     </button>
                 </BoxOrder>
             </Control>

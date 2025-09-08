@@ -95,3 +95,22 @@ export const PaymentOptions = styled.div`
         gap: 12px;
     }
 `
+
+
+export const CartTotal = styled.div`
+
+    background-color: ${({theme}) => theme.colors["base-card"]};
+
+
+`
+
+
+export const CartTotalInfo = styled.div`
+
+`
+
+
+export const CheckoutButton = styled.button`
+
+
+`
