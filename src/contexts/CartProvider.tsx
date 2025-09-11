@@ -1,6 +1,8 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, type ReactNode } from "react";
-import type { Item, Order } from "../reducers/reducer"
+import { createContext, useReducer, type ReactNode } from "react";
+import { cartReducer, type Item, type Order } from "../reducers/reducer"
+import { useNavigate } from "react-router-dom";
+import { addItemAction } from "../reducers/actions";
 
 interface CartContextType {
     cart: Item[];
@@ -20,16 +22,35 @@ interface CartContextProviderProps{
 }
 
 export function CartContextProvider({ children }: CartContextProviderProps){
+  const [cartState, dispatch] = useReducer(
+    cartReducer,
+    {
+      cart: [],
+      orders: [],
+    },
+    (cartState) => {
+      const storedStateAsJson = localStorage.getItem(
+        '@coffee-delivery:cart-state-1.0.0'
+      )
+
+          if (storedStateAsJson) {
+        return JSON.parse(storedStateAsJson)
+      }
+
+      return cartState
+    },
+  )
+
+  const navigate = useNavigate()
+
+  const {cart, orders} = cartState
+
+  function addItem(item: Item) {
+      dispatch(addItemAction(item))
+  }
 
   return(
-    <CartContext.Provider 
-    value={{
-        addItem, 
-        cart, 
-        decrementItemQuantity, 
-        incrementItemQuantity
-        }}>
-        {children}
+    <CartContext.Provider value={{addItem}}>
     </CartContext.Provider>
   )
 }

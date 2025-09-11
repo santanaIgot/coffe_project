@@ -3,7 +3,7 @@ import { Check, ShoppingCart } from "phosphor-react";
 import { BoxOrder, CoffeContainer, CoffeImage, Control, Description, Price, Tags, Title } from "./styles";
 import { useTheme } from "styled-components";
 import { ButtonIncrementDecrement } from "../ButtonIncrementDecrement";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useCart } from "../../hooks/useCart";
 
 
@@ -41,7 +41,24 @@ export function Card({ coffee }: Props) {
         addItem({id: coffee.id, quantity})
         setIsItemAdded(true)
         setQuantity(1)
+        console.log('aquiiiiiiiii');
+        
       }
+
+      useEffect(()=>{
+            let timeout: number
+            if(isItemAdded){
+                timeout = setTimeout(()=>{
+                    setIsItemAdded(false)
+                },1000)
+            }
+
+            return () => {
+                if(timeout){
+                    clearTimeout(timeout)
+                }
+            }
+      },[isItemAdded])
 
     return(
         <CoffeContainer>
