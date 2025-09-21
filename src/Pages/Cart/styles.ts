@@ -114,3 +114,37 @@ export const CheckoutButton = styled.button`
 
 
 `
+
+
+export const Coffee = styled.div`
+    display: flex;
+    justify-content: space-between;
+
+    > div{
+        >img{
+            width: 64px;
+            height: 64px;
+        }
+
+        display: flex;
+        align-items: stretch;
+        gap: 20px;
+
+
+        >div{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        aside{
+            font-weight: bold;
+        }
+    }
+`
+
+
+export const CoffeInfo = styled.div`
+    
+
+`

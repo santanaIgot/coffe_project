@@ -29,11 +29,52 @@ export function cartReducer(state: CartState, action: Actions) {
                     draft.cart.push(action.payload.item)
                 }
             })
-
             
-            break;
-    
+        case ActionsTypes.REMOVE_ITEM:
+            return produce(state, (draft)=>{
+                const itemToRemovedId = draft.cart.findIndex(
+                    (item) => item.id === action.payload.itemId,
+                )
+                draft.cart.splice(itemToRemovedId, 1)
+            }) 
+        
+        
+        case ActionsTypes.INCREMENT_ITEM_QUANTITY:
+            return produce(state, (draft)=>{
+                const itemToIncrement = draft.cart.find(
+                    (item) => item.id === action.payload.itemId
+                )
+                if(itemToIncrement?.id){
+                    itemToIncrement.quantity += 1
+                }
+            })
+
+        case ActionsTypes.DECREMENT_ITEM_QUANTITY:
+            return produce(state, (draft)=>{
+                const itemToDecrement = draft.cart.find(
+                    (item) => item.id === action.payload.itemId
+                )
+
+                if(itemToDecrement?.id && itemToDecrement.quantity > 1){
+                    itemToDecrement.quantity -= 1
+                }
+            })
+
+        
+        case ActionsTypes.CHECKOUT_CART:
+            return produce(state, (draft) => {
+                const newOrder = {
+                    id: new Date().getTime(),
+                    items: state.cart,
+                    ...action.payload.order,
+                }
+
+                draft.orders.push(newOrder)
+                draft.cart = []
+
+                action.payload.callback(`/order/${newOrder.id}/success`)
+            })
         default:
-            break;
+            return state
     }
 }

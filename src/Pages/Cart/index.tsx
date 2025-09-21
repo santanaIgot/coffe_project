@@ -6,6 +6,8 @@ import {
   CartTotal,
   CartTotalInfo,
   CheckoutButton,
+  Coffee,
+  CoffeInfo,
   Container,
   ContainerCart,
   FormCart,
@@ -18,6 +20,10 @@ import {
 import { Form } from "../../components/Form";
 import { RadioOptions } from "../../components/Radio";
 import  z from "zod";
+import { useCart } from "../../hooks/useCart";
+import coffes from "../../../data.json"
+import { Fragment } from "react/jsx-runtime";
+import { ButtonIncrementDecrement } from "../../components/ButtonIncrementDecrement";
 
 type FormInputs = {
    cep: number;
@@ -48,6 +54,32 @@ export type OrderInfo = z.infer<typeof newOrder>
 
 export function Cart() {
   const {register, handleSubmit, watch, formState: {errors}} = useForm<FormInputs>({});
+
+  const {cart} = useCart()
+
+  const coffesInCart = cart.map((item)=>{
+    const coffeInfo = coffes.coffees.find((coffe) => coffe.id === item.id)
+
+    if(!coffeInfo) throw new Error("Invalid coffe")
+
+    return {
+      ...coffeInfo,
+      quantity: item.quantity
+    }
+  })
+
+    function handleItemIncrement(itemId: string) {
+    handleItemIncrement(itemId)
+  }
+
+  function handleItemDecrement(itemId: string) {
+    handleItemDecrement(itemId)
+  }
+
+  function handleItemRemove(itemId: string) {
+    handleItemRemove(itemId)
+  }
+
   return (
     <Container>
       <ContainerCart>
@@ -116,7 +148,28 @@ export function Cart() {
       <ContainerCart>
         <h2>Cafés selecionados</h2>
         <CartTotal>
+        {coffesInCart.map((coffe)=> (
+          <Fragment key={coffe.id}>
+            <Coffee>
+              <div>
+                <img src={coffe.image} alt="" />
+                <div>
+                  <span>{coffe.title}</span>
+                </div>
 
+
+              <CoffeInfo>
+                  <ButtonIncrementDecrement
+                  quantity={coffe.quantity}
+                    handleDecrementQuantity={()=> handleItemDecrement(coffe.id)}
+                    handleIncrementQuantity={() => handleItemIncrement(coffe.id)}
+                  />
+              </CoffeInfo>
+              </div>
+
+            </Coffee>
+          </Fragment>
+        ))}
 
           <CartTotalInfo>
             <div>
