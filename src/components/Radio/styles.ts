@@ -3,7 +3,6 @@ import { mixins } from "../../styles/mixins";
 
 
 export const Container = styled.div`
-
     padding: 16px;
     width: 100%;
     display: flex;
@@ -21,7 +20,7 @@ export const Container = styled.div`
         background-color: ${({ theme }) => theme.colors['base-hover']};
     }
 
-    &[data-state='true'] {
+    & [data-state='true'] {
         background-color: ${({ theme }) => theme.colors['purple-light']};
         border-color: ${({ theme }) => theme.colors.purple};
     }

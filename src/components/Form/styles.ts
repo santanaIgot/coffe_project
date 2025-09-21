@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mixins } from "../../styles/mixins";
 
 
 export const Box = styled.div`
@@ -23,6 +24,16 @@ export const Container = styled.label`
     padding: 12px;
     outline: none;
     background-color: transparent;
+
+
+    &[data-state='focused'] {
+    border-color: ${({ theme }) => theme.colors['yellow-dark']};
+    }
+
+    &[data-state='blurred'] {
+      border-color: ${({ theme }) => theme.colors['base-button']};
+    }
+
  
 
     &::placeholder{
@@ -33,3 +44,8 @@ export const Container = styled.label`
 
 `
 
+export const ErrorMessage = styled.p`
+  ${mixins.fonts.textXS}
+  font-weight: 400;
+  color: red;
+`

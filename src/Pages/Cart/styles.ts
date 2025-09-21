@@ -88,7 +88,7 @@ export const PaymentOptions = styled.div`
     display: flex;
     flex-direction: column;
     gap: 8px;
-
+    
     div{
         display: flex;
         justify-content: space-between;
@@ -98,20 +98,68 @@ export const PaymentOptions = styled.div`
 
 
 export const CartTotal = styled.div`
-
     background-color: ${({theme}) => theme.colors["base-card"]};
+    padding: 40px;
+    border-radius: 6px 36px;
+    width: 100%;
+    min-width: 448px;
 
 
+  > span {
+    display: block;
+    height: 1px;
+    background-color: ${({ theme }) => theme.colors['base-button']};
+    margin: 24px 0;
+  }
 `
 
 
 export const CartTotalInfo = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 
+    > div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+         span:first-child {
+          ${mixins.fonts.textS};
+         }
+
+        span:last-child {
+          ${mixins.fonts.textM};
+        }
+    }
+    
+    div:last-child {
+        span {
+            ${mixins.fonts.textL};
+            font-weight: bold;
+        }
+    }
+    
 `
 
 
 export const CheckoutButton = styled.button`
+    margin-top: 24px;
+    width: 100%;
+    padding: 12px;
+    text-transform: uppercase;
 
+    ${mixins.fonts.buttonG};
+    color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.yellow};
+
+    transition: all 0.2s;
+
+    &:hover {
+        background-color: ${({ theme }) => theme.colors['yellow-dark']};
+    }
+
+    border-radius: 6px;
 
 `
 
@@ -121,7 +169,7 @@ export const Coffee = styled.div`
     justify-content: space-between;
 
     > div{
-        >img{
+        > img{
             width: 64px;
             height: 64px;
         }
@@ -131,7 +179,7 @@ export const Coffee = styled.div`
         gap: 20px;
 
 
-        >div{
+        > div{
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -145,6 +193,31 @@ export const Coffee = styled.div`
 
 
 export const CoffeInfo = styled.div`
-    
+    display: flex;
+    gap: 8px;
 
+    > button{
+        padding: 6px 8px;
+        background-color: ${({theme})=> theme.colors["base-button"]};
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        transition: all 0.2s;
+
+        &:hover{
+            background-color: ${({ theme }) => theme.colors['base-hover']};;
+        }
+
+        > svg {
+            color: ${({ theme }) => theme.colors.purple};
+        }
+
+        > span{
+            ${mixins.fonts.buttonM}
+            text-transform: uppercase;
+            color: ${({ theme }) => theme.colors["base-text"]};
+        }
+    }
 `

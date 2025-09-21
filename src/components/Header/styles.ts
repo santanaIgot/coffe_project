@@ -43,5 +43,9 @@ export const Aside = styled.aside`
     background-color: ${({theme}) => theme.colors["yellow-light"]};
     border-radius: 6px;
     color: ${({theme}) => theme.colors["yellow-dark"]};
+
+     &[aria-disabled = 'true'] {
+      pointer-events: none;
+    }
    }
 `

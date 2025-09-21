@@ -5,7 +5,7 @@ import { MapPin, ShoppingCart } from "phosphor-react";
 import { useCart } from "../../hooks/useCart";
 
 export function Header() {
-  const {cart} = useCart()
+  const { cart } = useCart()
   return (
     <HeaderContainer>
       <Link to="/">
